@@ -1,0 +1,87 @@
+
+body{
+    font-family:'Open Sans', sans-serif;
+    padding-top:50px;
+}
+header{
+    background-color: #3e4249 ;
+    color: #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #080808;
+}
+h1.header-title{
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+.pull-right .btn{
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+.list-group-item:hover{
+    background-color: #eee;
+    cursor: pointer;
+}
+.list-group-item:hover .buttons,table.table tr:hover .row-buttons{
+    display: block;
+}
+
+.list-group-item-heading{
+    font-size: 150%;
+}
+.list-group-item-text{
+    color: #999;
+}
+.buttons{
+    position: absolute;
+    height: 20px;
+    width: 83px;
+    top:10px;
+    right: 10px;
+    text-align: center;
+    display: none;
+}
+.panel-footer small,.modal-footer small{
+    color:#9c9c9c;
+}
+input.task-input{
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    height: 46px;
+    line-height: 1.3333px;
+    color: #555555;
+    font-style: italic;
+    display: block;
+}
+input.task-input:focus,input.task-input:active{
+    outline: none;
+}
+
+.done{
+    text-decoration: line-through;
+    color: #ddd;
+}
+
+
+table.table tbody tr td{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.task-item{
+    position: relative;
+}
+.row-buttons{
+    position: absolute;
+    height: 20px;
+    width: 40px;
+    top:15px;
+    right: 10px;
+    text-align: center;
+    display: none;
+}
+.hidden
+{
+    display: none;
+}
