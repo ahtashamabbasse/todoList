@@ -60,6 +60,7 @@
                 <div class="alert alert-warning {{$count?'hidden':""}}" id="no-recrod-alert">
                     No Record Found
                 </div>
+                <div class="alert alert-success " style="display: none" id="update-alert"></div>
                 <div class="panel panel-default {{ !$count?'hidden':""}}">
 
 
@@ -82,6 +83,7 @@
 
     @include("todolist.todoModal")
     @include("todolist.taskModal")
+    @include("todolist.confirmModal")
 
 
     

@@ -1,7 +1,7 @@
 <div class="alert alert-success" id="add-new-alert" style="display: none;"></div>
 {!! Form::Model($todolist,[
-"route"=>$todolist->exists() ? ["todo.update",$todolist->id] : "todo.store",
-"method"=>$todolist->exists() ? "PUT": "POST"
+"route"=>$todolist->exists ? ["todo.update",$todolist->id] : "todo.store",
+"method"=>$todolist->exists ? "PUT": "POST"
 
 ]) !!}
 

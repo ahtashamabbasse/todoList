@@ -14,13 +14,13 @@ $(document).ready(function () {
             success:function (response) {
                 $("#todo-list-body").html(response);
             }
-            
         })
         $("#list-model").modal("show");
     })
 
-    function showMessage(msg) {
-        $("#add-new-alert").text(msg).slideDown(500).delay(1000).slideUp(500)
+    function showMessage(msg,element) {
+        var alert=element==undefined?"#add-new-alert":element;
+        $(alert).text(msg).slideDown(500).delay(1000).slideUp(500)
     }
     function updateTodoListCounter() {
         var count=$(".list-group-item").length;
@@ -37,19 +37,16 @@ $(document).ready(function () {
         event.preventDefault();
         var form=$("#todo-list-body form"),
             url=form.attr("action"),
-
             method=$("input[name=_method]").val()==undefined?"POST":"PUT";
-        console.log(method)
+
         $("form").find(".help-block").remove();
         $("form").find(".form-group").removeClass("has-error")
-
         $.ajax({
             url:url,
             method:method,
             data:form.serialize(),
-
             success:function (response) {
-                if(method=="Post")
+                if(method=="POST")
                 {
                     $("#todo-list").prepend(response)
                     showMessage("Todo List Has been Created Successfully")
@@ -66,6 +63,7 @@ $(document).ready(function () {
 
                     }
                     $("#list-model").modal("hide")
+                    showMessage("Record Update Successfully","#update-alert")
 
                 }
 
@@ -91,10 +89,23 @@ $(document).ready(function () {
 
 
 
+    $("body").on("click",".delete",function (event) {
+        event.preventDefault();
+        var me=$(this),
+            title=me.attr("data-title")
+            action=me.attr("href")
+
+        $("#confirm-model form").attr("action",action)
+        $("#confirm-model p").html("Are you Sure to Delete the <strong>"+title+"</strong> ToDo List")
+
+
+        $("#confirm-model").modal("show");
+    })
     $(".show-task-model").click(function (event) {
         event.preventDefault();
         $("#task-model").modal("show");
     })
+
 
 
     $("input[type=checkbox]").iCheck({
