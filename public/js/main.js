@@ -25,6 +25,19 @@ $(document).ready(function () {
     function updateTodoListCounter() {
         var count=$(".list-group-item").length;
         $("#todo-list-counter").text(count).next().text(count>1?"Records":"Record")
+        showNoRecordMessage(count)
+    }
+    function showNoRecordMessage(total) {
+        if(total>0)
+        {
+            $("#todo-list").closest(".panel").removeClass("hidden");
+            $("#no-recrod-alert").addClass("hidden")
+        }
+        else
+        {
+            $("#todo-list").closest(".panel").addClass("hidden");
+            $("#no-recrod-alert").removeClass("hidden")
+        }
     }
 
     // $("#list-model").on("keypress",":input:not(textarea)",function (event) {
@@ -101,6 +114,26 @@ $(document).ready(function () {
 
         $("#confirm-model").modal("show");
     })
+    $("#todo-list-remove-btn").click(function (e) {
+        e.preventDefault();
+        var form=$("#confirm-model form"),
+            url=form.attr("action")
+            $.ajax({
+                url:url,
+                method:"DELETE",
+                data:form.serialize(),
+                success:function (response) {
+                    $("#confirm-model").modal("hide");
+                    $("#todo-list-"+response.id).fadeOut(100,function () {
+                        $(this).remove()
+                        showMessage(response.title+"Todo List Deleted Successfully","#update-alert")
+                        updateTodoListCounter()
+                    })
+                }
+            })
+    })
+
+
     $(".show-task-model").click(function (event) {
         event.preventDefault();
         $("#task-model").modal("show");

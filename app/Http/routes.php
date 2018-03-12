@@ -14,7 +14,9 @@
 
 
 Route::resource("/todo","todoListController");
-
+Route::get('/',function(){
+    echo phpinfo();
+});
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
